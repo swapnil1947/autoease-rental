@@ -20,7 +20,7 @@ const steps = [
   {
     id: 3,
     title: 'Enjoy the journey',
-    description: 'Receive the keys and hit the road. Return when you're done. Simple as that.',
+    description: "Receive the keys and hit the road. Return when you're done. Simple as that.",
     icon: <CreditCard className="h-8 w-8" />,
     color: 'bg-green-500/10 text-green-500'
   }
