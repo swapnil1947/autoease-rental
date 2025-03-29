@@ -6,6 +6,7 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
 import { cn } from '@/lib/utils';
+import Logo from '@/components/common/Logo';
 
 interface NavbarProps {
   className?: string;
@@ -16,12 +17,7 @@ const Navbar: React.FC<NavbarProps> = ({ className }) => {
     <header className={cn("w-full bg-background border-b sticky top-0 z-50", className)}>
       <div className="container flex h-16 items-center justify-between">
         {/* Logo */}
-        <Link to="/" className="flex items-center gap-2">
-          <div className="w-8 h-8 rounded-lg bg-primary flex items-center justify-center">
-            <span className="text-primary-foreground font-bold">AE</span>
-          </div>
-          <span className="text-xl font-bold">AutoEase</span>
-        </Link>
+        <Logo />
         
         {/* Search - Hide on mobile */}
         <div className="hidden md:flex relative w-full max-w-sm mx-4">
@@ -46,6 +42,18 @@ const Navbar: React.FC<NavbarProps> = ({ className }) => {
             <span className="absolute -top-1 -right-1 w-4 h-4 bg-primary text-[10px] text-primary-foreground rounded-full flex items-center justify-center">3</span>
           </Button>
           
+          <Link to="/login">
+            <Button variant="outline" size="sm" className="hidden md:flex">
+              Sign In
+            </Button>
+          </Link>
+          
+          <Link to="/signup">
+            <Button size="sm" className="hidden md:flex">
+              Sign Up
+            </Button>
+          </Link>
+          
           <Link to="/profile">
             <Button variant="ghost" size="icon">
               <User className="h-5 w-5" />
@@ -64,6 +72,8 @@ const Navbar: React.FC<NavbarProps> = ({ className }) => {
                 <Link to="/listings" className="text-lg font-medium py-2 hover:text-primary">Explore</Link>
                 <Link to="/host" className="text-lg font-medium py-2 hover:text-primary">Host a car</Link>
                 <Link to="/messages" className="text-lg font-medium py-2 hover:text-primary">Messages</Link>
+                <Link to="/login" className="text-lg font-medium py-2 hover:text-primary">Login</Link>
+                <Link to="/signup" className="text-lg font-medium py-2 hover:text-primary">Sign Up</Link>
                 <Link to="/profile" className="text-lg font-medium py-2 hover:text-primary">Profile</Link>
               </div>
             </SheetContent>
