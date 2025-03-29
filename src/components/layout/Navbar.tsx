@@ -1,7 +1,7 @@
 
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Search, Bell, User, Menu } from 'lucide-react';
+import { Search, Bell, User, Menu, Layers } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
@@ -33,6 +33,10 @@ const Navbar: React.FC<NavbarProps> = ({ className }) => {
           <Link to="/listings" className="text-sm font-medium hover:text-primary">Explore</Link>
           <Link to="/host" className="text-sm font-medium hover:text-primary">Host a car</Link>
           <Link to="/messages" className="text-sm font-medium hover:text-primary">Messages</Link>
+          <Link to="/showcase" className="text-sm font-medium hover:text-primary flex items-center gap-1">
+            <Layers className="h-4 w-4" />
+            Showcase
+          </Link>
         </nav>
         
         {/* Actions */}
@@ -72,6 +76,10 @@ const Navbar: React.FC<NavbarProps> = ({ className }) => {
                 <Link to="/listings" className="text-lg font-medium py-2 hover:text-primary">Explore</Link>
                 <Link to="/host" className="text-lg font-medium py-2 hover:text-primary">Host a car</Link>
                 <Link to="/messages" className="text-lg font-medium py-2 hover:text-primary">Messages</Link>
+                <Link to="/showcase" className="text-lg font-medium py-2 hover:text-primary flex items-center gap-2">
+                  <Layers className="h-5 w-5" />
+                  App Showcase
+                </Link>
                 <Link to="/login" className="text-lg font-medium py-2 hover:text-primary">Login</Link>
                 <Link to="/signup" className="text-lg font-medium py-2 hover:text-primary">Sign Up</Link>
                 <Link to="/profile" className="text-lg font-medium py-2 hover:text-primary">Profile</Link>
