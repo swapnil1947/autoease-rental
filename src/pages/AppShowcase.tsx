@@ -1,6 +1,5 @@
-
 import React, { useState } from 'react';
-import { ChevronLeft, ChevronRight } from 'lucide-react';
+import { ChevronLeft, ChevronRight, MapPin, Calendar } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import Logo from '@/components/common/Logo';
 import Navbar from '@/components/layout/Navbar';
@@ -159,16 +158,18 @@ const screenshots = [
           
           <div className="bg-background rounded-lg shadow p-4 mt-4 space-y-4">
             <div className="grid grid-cols-2 gap-4">
-              <div>
+              <div className="relative">
+                <MapPin className="absolute left-3 top-2.5 h-4 w-4 text-muted-foreground" />
                 <input 
                   placeholder="Location" 
-                  className="w-full px-4 py-2 rounded-md border" 
+                  className="w-full pl-9 px-4 py-2 rounded-md border" 
                 />
               </div>
-              <div>
+              <div className="relative">
+                <Calendar className="absolute left-3 top-2.5 h-4 w-4 text-muted-foreground" />
                 <input 
                   placeholder="Pick-up date" 
-                  className="w-full px-4 py-2 rounded-md border" 
+                  className="w-full pl-9 px-4 py-2 rounded-md border" 
                   type="date"
                 />
               </div>
