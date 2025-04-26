@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
@@ -6,6 +7,19 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { Eye, EyeOff, Mail, User, Key } from 'lucide-react';
 import { toast } from 'sonner';
 import { supabase } from '@/integrations/supabase/client';
+import { Button } from '@/components/ui/button';
+import {
+  Form,
+  FormControl,
+  FormField,
+  FormItem,
+  FormLabel,
+  FormMessage,
+} from '@/components/ui/form';
+import { Input } from '@/components/ui/input';
+import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
+import { Checkbox } from '@/components/ui/checkbox';
+import Logo from '@/components/common/Logo';
 
 const formSchema = z.object({
   fullName: z.string().min(2, { message: 'Name must be at least 2 characters' }),
