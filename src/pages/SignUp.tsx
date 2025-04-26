@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
@@ -6,20 +5,7 @@ import { z } from 'zod';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { Eye, EyeOff, Mail, User, Key } from 'lucide-react';
 import { toast } from 'sonner';
-
-import { Button } from '@/components/ui/button';
-import {
-  Form,
-  FormControl,
-  FormField,
-  FormItem,
-  FormLabel,
-  FormMessage,
-} from '@/components/ui/form';
-import { Input } from '@/components/ui/input';
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
-import { Checkbox } from '@/components/ui/checkbox';
-import Logo from '@/components/common/Logo';
+import { supabase } from '@/integrations/supabase/client';
 
 const formSchema = z.object({
   fullName: z.string().min(2, { message: 'Name must be at least 2 characters' }),
@@ -52,11 +38,29 @@ const SignUp: React.FC = () => {
     },
   });
 
-  const onSubmit = (data: FormValues) => {
-    // In a real app, you would handle user registration here
-    console.log('Sign up data:', data);
-    toast.success('Account created successfully!');
-    navigate('/login');
+  const onSubmit = async (data: FormValues) => {
+    try {
+      const { error } = await supabase.auth.signUp({
+        email: data.email,
+        password: data.password,
+        options: {
+          data: {
+            full_name: data.fullName,
+          }
+        }
+      });
+
+      if (error) {
+        toast.error(error.message);
+        return;
+      }
+
+      toast.success('Account created successfully! Please check your email to verify your account.');
+      navigate('/login');
+    } catch (error) {
+      console.error('Error during sign up:', error);
+      toast.error('An unexpected error occurred. Please try again.');
+    }
   };
 
   return (
